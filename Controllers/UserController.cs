@@ -20,11 +20,11 @@ namespace EticaretSite.Controllers
 
         public UserController()
         {
-            _connectionString = "server=localhost; database=eticaretsite; user=myuser; password=mypassword";
+            _connectionString = "server=localhost; database=eticaretsite; user=root; password=";
         }
 
         [HttpGet]
-        [Route("get-users")]
+        [Route("get-user")]
         public async Task<IActionResult> GetUsers ()
         {
             try
@@ -43,15 +43,15 @@ namespace EticaretSite.Controllers
                                 var user = new User
                                 {
                                     UserId = Convert.ToInt32(reader["UserId"]),
-                                    Firstname = reader["FirstName"].ToString(),
-                                    Lastname = reader["LastName"].ToString(),
+                                    FirstName = reader["FirstName"].ToString(),
+                                    LastName = reader["LastName"].ToString(),
                                     Email = reader["Email"].ToString(),
                                     Gender = reader["Gender"].ToString(),
-                                    Birthdate =  Convert.ToDateTime(reader["BirthDate"]),
-                                    Telnumber1 = reader["TelNumber1"].ToString(),
-                                    Telnumber2 = reader["TelNumber2"].ToString(),
-                                    Createdate = Convert.ToDateTime(reader["CreateDate"]),
-                                    Isactive = Convert.ToInt32(reader["IsActive"]),
+                                    BirthDate =  Convert.ToDateTime(reader["BirthDate"]),
+                                    TelNumber1 = reader["TelNumber1"].ToString(),
+                                    TelNumber2 = reader["TelNumber2"].ToString(),
+                                    CreateDate = Convert.ToDateTime(reader["CreateDate"]),
+                                    IsActive = Convert.ToInt32(reader["IsActive"]),
                                     Password = reader["Password"].ToString(),
                                 };
                                 users.Add(user);

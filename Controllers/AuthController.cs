@@ -20,7 +20,7 @@ namespace EticaretSite.Controllers
 
         public AuthController()
         {
-            _connectionString = "server=localhost; database=mydatabase; user=myuser; password=mypassword";
+            _connectionString = "server=localhost; database=eticaretsite; user=root; password=";
         }
 
 
