@@ -1,0 +1,11 @@
+
+1-Core KAtmaný
+* Db iþlemleri için oluþturulan bir katmandýr
+table , Interface, Abstract
+
+2-Repository Katmaný
+*bussiness yani iþi yapan katmandýr
+
+
+3-Service Katmaný
+*

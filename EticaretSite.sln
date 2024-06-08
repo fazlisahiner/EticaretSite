@@ -7,6 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EticaretSite", "EticaretSit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETicaret.Core", "..\ETicaret.Core\ETicaret.Core.csproj", "{C1959B45-B2EC-4281-BC4A-ED45D8EC0EEA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NLayer", "NLayer", "{DF8A65C4-67B2-4B48-B0D8-94CA532FE58F}"
+	ProjectSection(SolutionItems) = preProject
+		Katmanlı Mimariler.txt = Katmanlı Mimariler.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETicaret.Repository", "..\ETicaret.Repository\ETicaret.Repository.csproj", "{0E808642-15D2-479E-9088-D54F1DC5E135}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{4CA74789-EB88-45D0-BF5F-B2EAE627148D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +30,18 @@ Global
 		{C1959B45-B2EC-4281-BC4A-ED45D8EC0EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1959B45-B2EC-4281-BC4A-ED45D8EC0EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1959B45-B2EC-4281-BC4A-ED45D8EC0EEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E808642-15D2-479E-9088-D54F1DC5E135}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E808642-15D2-479E-9088-D54F1DC5E135}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E808642-15D2-479E-9088-D54F1DC5E135}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E808642-15D2-479E-9088-D54F1DC5E135}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C3028422-53C2-4E2C-B961-0E47B619BD0B} = {4CA74789-EB88-45D0-BF5F-B2EAE627148D}
+		{C1959B45-B2EC-4281-BC4A-ED45D8EC0EEA} = {DF8A65C4-67B2-4B48-B0D8-94CA532FE58F}
+		{0E808642-15D2-479E-9088-D54F1DC5E135} = {DF8A65C4-67B2-4B48-B0D8-94CA532FE58F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {629C5EB7-459B-4E6E-8F87-8FA561BDD4D8}

@@ -69,6 +69,8 @@ namespace EticaretSite.Controllers
                 {
                     await conn.OpenAsync();
                     string query = "INSERT INTO category (CategoryName) VALUES (@CategoryName)";
+                    //ADO.Net
+                    //EF
                     using (var cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@CategoryName", category.CategoryName);
