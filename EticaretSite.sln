@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EticaretSite", "EticaretSite.csproj", "{C3028422-53C2-4E2C-B961-0E47B619BD0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EticaretSite", "EticaretSite.csproj", "{C3028422-53C2-4E2C-B961-0E47B619BD0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETicaret.Core", "..\ETicaret.Core\ETicaret.Core.csproj", "{C1959B45-B2EC-4281-BC4A-ED45D8EC0EEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C3028422-53C2-4E2C-B961-0E47B619BD0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3028422-53C2-4E2C-B961-0E47B619BD0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3028422-53C2-4E2C-B961-0E47B619BD0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1959B45-B2EC-4281-BC4A-ED45D8EC0EEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1959B45-B2EC-4281-BC4A-ED45D8EC0EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1959B45-B2EC-4281-BC4A-ED45D8EC0EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1959B45-B2EC-4281-BC4A-ED45D8EC0EEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
