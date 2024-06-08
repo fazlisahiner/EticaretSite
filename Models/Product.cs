@@ -10,8 +10,8 @@ namespace EticaretSite.Models
         public string ProductName { get; set; }
         public decimal Price { get; set; }
         public int StockQuantity { get; set; }
-        public DateTime CreateAt { get; set; }
-        public DateTime UpdateAt { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime UpdateDate { get; set; }
         public string? Description { get; set; }
         public int CategoryId { get; set; }
         public string? Brand { get; set; }

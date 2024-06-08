@@ -48,8 +48,8 @@ namespace EticaretSite.Controllers
                                     ProductName = reader["ProductName"].ToString(),
                                     Price = Convert.ToDecimal(reader["Price"]),
                                     StockQuantity = Convert.ToInt32(reader["StockQuantity"]),
-                                    CreateAt = Convert.ToDateTime(reader["CreateAt"]),
-                                    UpdateAt = Convert.ToDateTime(reader["UpdateAt"]),
+                                    CreateDate = Convert.ToDateTime(reader["CreateDate"]),
+                                    UpdateDate = Convert.ToDateTime(reader["UpdateDate"]),
                                     Description = reader["Description"].ToString(),
                                     CategoryId = Convert.ToInt32(reader["CategoryID"]),
                                     Brand = reader["Brand"].ToString(),
@@ -98,8 +98,8 @@ namespace EticaretSite.Controllers
                                     ProductName = reader["ProductName"].ToString(),
                                     Price = Convert.ToDecimal(reader["Price"]),
                                     StockQuantity = Convert.ToInt32(reader["StockQuantity"]),
-                                    CreateAt = Convert.ToDateTime(reader["CreateAt"]),
-                                    UpdateAt = Convert.ToDateTime(reader["UpdateAt"]),
+                                    CreateDate = Convert.ToDateTime(reader["CreateDate"]),
+                                    UpdateDate = Convert.ToDateTime(reader["UpdateDate"]),
                                     Description = reader["Description"].ToString(),
                                     CategoryId = Convert.ToInt32(reader["CategoryID"]),
                                     Brand = reader["Brand"].ToString(),
@@ -132,15 +132,15 @@ namespace EticaretSite.Controllers
                 using (var conn = new MySqlConnection(_connectionString))
                 {
                     await conn.OpenAsync();
-                    string query = "INSERT INTO product (ProductCode, ProductName, Price, StockQuantity, CreateAt, UpdateAt, Description, CategoryID, Brand, ImageUrl) VALUES (@ProductCode, @ProductName, @Price, @StockQuantity, @CreateAt, @UpdateAt, @Description, @CategoryID, @Brand, @ImageUrl)";
+                    string query = "INSERT INTO product (ProductCode, ProductName, Price, StockQuantity, CreateDate, UpdateDate, Description, CategoryID, Brand, ImageUrl) VALUES (@ProductCode, @ProductName, @Price, @StockQuantity, @CreateDate, @UpdateDate, @Description, @CategoryID, @Brand, @ImageUrl)";
                     using (var cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@ProductCode", product.ProductCode);
                         cmd.Parameters.AddWithValue("@ProductName", product.ProductName);
                         cmd.Parameters.AddWithValue("@Price", product.Price);
                         cmd.Parameters.AddWithValue("@StockQuantity", product.StockQuantity);
-                        cmd.Parameters.AddWithValue("@CreateAt", DateTime.Now);
-                        cmd.Parameters.AddWithValue("@UpdateAt", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@CreateDate", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@UpdateDate", DateTime.Now);
                         cmd.Parameters.AddWithValue("@Description", product.Description);
                         cmd.Parameters.AddWithValue("@CategoryID", product.CategoryId);
                         cmd.Parameters.AddWithValue("@Brand", product.Brand);
@@ -165,7 +165,7 @@ namespace EticaretSite.Controllers
                 using (var conn = new MySqlConnection(_connectionString))
                 {
                     await conn.OpenAsync();
-                    string query = "UPDATE product SET ProductName = @ProductName, Price = @Price, StockQuantity = @StockQuantity, Description = @Description, ImageUrl = @ImageUrl, UpdateAt = @UpdateAt WHERE ProductID = @ProductID";
+                    string query = "UPDATE product SET ProductName = @ProductName, Price = @Price, StockQuantity = @StockQuantity, Description = @Description, ImageUrl = @ImageUrl, UpdateDate = @UpdateDate WHERE ProductID = @ProductID";
                     using (var cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@ProductName", updatedProduct.ProductName);
@@ -173,7 +173,7 @@ namespace EticaretSite.Controllers
                         cmd.Parameters.AddWithValue("@StockQuantity", updatedProduct.StockQuantity);
                         cmd.Parameters.AddWithValue("@Description", updatedProduct.Description);
                         cmd.Parameters.AddWithValue("@ImageUrl", updatedProduct.ImageUrl);
-                        cmd.Parameters.AddWithValue("@UpdateAt", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@UpdateDate", DateTime.Now);
                         cmd.Parameters.AddWithValue("@ProductID", productId);
                         int rowsAffected = await cmd.ExecuteNonQueryAsync();
                         if (rowsAffected > 0)
@@ -216,8 +216,8 @@ namespace EticaretSite.Controllers
                                     ProductName = reader["ProductName"].ToString(),
                                     Price = Convert.ToDecimal(reader["Price"]),
                                     StockQuantity = Convert.ToInt32(reader["StockQuantity"]),
-                                    CreateAt = Convert.ToDateTime(reader["CreateAt"]),
-                                    UpdateAt = Convert.ToDateTime(reader["UpdateAt"]),
+                                    CreateDate = Convert.ToDateTime(reader["CreateDate"]),
+                                    UpdateDate = Convert.ToDateTime(reader["UpdateDate"]),
                                     Description = reader["Description"].ToString(),
                                     CategoryId = Convert.ToInt32(reader["CategoryID"]),
                                     Brand = reader["Brand"] == DBNull.Value ? null : reader["Brand"].ToString(),
@@ -265,8 +265,8 @@ namespace EticaretSite.Controllers
                                     ProductName = reader["ProductName"].ToString(),
                                     Price = Convert.ToDecimal(reader["Price"]),
                                     StockQuantity = Convert.ToInt32(reader["StockQuantity"]),
-                                    CreateAt = Convert.ToDateTime(reader["CreateAt"]),
-                                    UpdateAt = Convert.ToDateTime(reader["UpdateAt"]),
+                                    CreateDate = Convert.ToDateTime(reader["CreateDate"]),
+                                    UpdateDate = Convert.ToDateTime(reader["UpdateDate"]),
                                     Description = reader["Description"].ToString(),
                                     CategoryId = Convert.ToInt32(reader["CategoryID"]),
                                     Brand = reader["Brand"] == DBNull.Value ? null : reader["Brand"].ToString(),
@@ -327,7 +327,7 @@ namespace EticaretSite.Controllers
                 using (var conn = new MySqlConnection(_connectionString))
                 {
                     await conn.OpenAsync();
-                    string query = "UPDATE product SET ProductName = @ProductName, Price = @Price, StockQuantity = @StockQuantity, Description = @Description, ImageUrl = @ImageUrl, UpdateAt = @UpdateAt, Brand = COALESCE(@Brand, Brand), ProductCode = COALESCE(@ProductCode, ProductCode) WHERE ProductID = @ProductID";
+                    string query = "UPDATE product SET ProductName = @ProductName, Price = @Price, StockQuantity = @StockQuantity, Description = @Description, ImageUrl = @ImageUrl, UpdateDate = @UpdateDate, Brand = COALESCE(@Brand, Brand), ProductCode = COALESCE(@ProductCode, ProductCode) WHERE ProductID = @ProductID";
                     using (var cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@ProductName", updatedProduct.ProductName);
@@ -335,7 +335,7 @@ namespace EticaretSite.Controllers
                         cmd.Parameters.AddWithValue("@StockQuantity", updatedProduct.StockQuantity);
                         cmd.Parameters.AddWithValue("@Description", updatedProduct.Description);
                         cmd.Parameters.AddWithValue("@ImageUrl", updatedProduct.ImageUrl);
-                        cmd.Parameters.AddWithValue("@UpdateAt", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@UpdateDate", DateTime.Now);
                         cmd.Parameters.AddWithValue("@Brand", updatedProduct.Brand ?? DBNull.Value);
                         cmd.Parameters.AddWithValue("@ProductCode", updatedProduct.ProductCode ?? DBNull.Value);
                         cmd.Parameters.AddWithValue("@ProductID", productId);
@@ -367,7 +367,7 @@ namespace EticaretSite.Controllers
                         using (var conn = new MySqlConnection(_connectionString))
                         {
                             await conn.OpenAsync();
-                            string query = "UPDATE product SET ProductName = @ProductName, Price = @Price, StockQuantity = @StockQuantity, Description = @Description, ImageUrl = @ImageUrl, UpdateAt = @UpdateAt, Brand = @Brand, ProductCode = @ProductCode WHERE ProductID = @ProductID";
+                            string query = "UPDATE product SET ProductName = @ProductName, Price = @Price, StockQuantity = @StockQuantity, Description = @Description, ImageUrl = @ImageUrl, UpdateDate = @UpdateDate, Brand = @Brand, ProductCode = @ProductCode WHERE ProductID = @ProductID";
                             using (var cmd = new MySqlCommand(query, conn))
                             {
                                 cmd.Parameters.AddWithValue("@ProductName", updatedProduct.ProductName);
@@ -375,7 +375,7 @@ namespace EticaretSite.Controllers
                                 cmd.Parameters.AddWithValue("@StockQuantity", updatedProduct.StockQuantity);
                                 cmd.Parameters.AddWithValue("@Description", updatedProduct.Description);
                                 cmd.Parameters.AddWithValue("@ImageUrl", updatedProduct.ImageUrl);
-                                cmd.Parameters.AddWithValue("@UpdateAt", DateTime.Now);
+                                cmd.Parameters.AddWithValue("@UpdateDate", DateTime.Now);
                                 cmd.Parameters.AddWithValue("@Brand", updatedProduct.Brand);
                                 cmd.Parameters.AddWithValue("@ProductCode", updatedProduct.ProductCode);
                                 cmd.Parameters.AddWithValue("@ProductID", productId);
