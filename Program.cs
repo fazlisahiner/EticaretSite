@@ -1,4 +1,8 @@
 
+using ETicaret.Repository;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+
 namespace EticaretSite
 {
     public class Program
@@ -13,6 +17,23 @@ namespace EticaretSite
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+
+            #region DB baðlantýsý
+
+            builder.Services.AddDbContext<MyECommerceDB>(x =>
+            {
+                x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnectionDB"), option =>
+                {
+                    option.MigrationsAssembly(Assembly.GetAssembly(typeof(MyECommerceDB)).GetName().Name);
+                });
+            });
+
+
+
+            #endregion
+
+
 
             var app = builder.Build();
 

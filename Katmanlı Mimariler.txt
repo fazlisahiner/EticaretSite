@@ -8,4 +8,12 @@ table , Interface, Abstract
 
 
 3-Service Katmaný
-*
+
+***************************************************************
+
+--Neden Design Pattern
+
+        1-Builder
+        2-Creater
+        3-structer
+       
