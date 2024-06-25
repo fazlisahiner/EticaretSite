@@ -76,8 +76,3 @@ namespace EticaretSite.Controllers
 
     }
 }
-
-//"ConnectionStrings": {
-
-//    "SqlConnectionDB": "Data Source=DESKTOP-AF9CICQ\\SQLEXPRESS;Initial Catalog=MyECommerceDB;Integrated Security=True;Trust Server Certificate=True"
-//  },
