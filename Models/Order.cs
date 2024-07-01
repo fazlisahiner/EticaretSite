@@ -7,6 +7,6 @@ namespace EticaretSite.Models
         public DateTime OrderDate { get; set; }
         public decimal TotalPrice { get; set; }
         public int OrderStatus { get; set; }
-        public int EmplooyeeId { get; set; }
+        public int? EmployeeId { get; set; }
     }
 }

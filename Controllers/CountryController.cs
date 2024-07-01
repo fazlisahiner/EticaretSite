@@ -19,7 +19,7 @@ namespace EticaretSite.Controllers
     {
         private readonly string _connectionString;
 
-        public CountryController ( )
+        public CountryController()
         {
             _connectionString = "server=localhost; database=eticaretsite; user=root; password=";
         }
@@ -28,18 +28,18 @@ namespace EticaretSite.Controllers
         [Route("get-country")]
         public async Task<IActionResult> GetCountry()
         {
-            try 
+            try
             {
-                using(var conn = new MySqlConnection(_connectionString))
+                using (var conn = new MySqlConnection(_connectionString))
                 {
-                    await  conn.OpenAsync();
-                    string query ="SELECT*FROM country";
+                    await conn.OpenAsync();
+                    string query = "SELECT*FROM country";
                     using (var cmd = new MySqlCommand(query, conn))
                     {
                         using (var reader = await cmd.ExecuteReaderAsync())
                         {
                             var countries = new List<Country>();
-                            while(await reader.ReadAsync())
+                            while (await reader.ReadAsync())
                             {
                                 var country = new Country
                                 {
@@ -56,6 +56,83 @@ namespace EticaretSite.Controllers
                     }
                 }
 
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route("update-country/{countryId}")]
+        public async Task<IActionResult> UpdateCountry(int countryId, [FromBody] Country updatedCountry)
+        {
+            try
+            {
+                using (var conn = new MySqlConnection(_connectionString))
+                {
+                    await conn.OpenAsync();
+                    string query = "UPDATE country SET BinaryCode=@BinaryCode, TripleCode=@TripleCode, CountryName=@CountryName, PhoneCode=@PhoneCode WHERE CountryID=@CountryID";
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@BinaryCode", updatedCountry.BinaryCode);
+                        cmd.Parameters.AddWithValue("@TripleCode", updatedCountry.TripleCode);
+                        cmd.Parameters.AddWithValue("@CountryName", updatedCountry.CountryName);
+                        cmd.Parameters.AddWithValue("@PhoneCode", updatedCountry.PhoneCode);
+                        cmd.Parameters.AddWithValue("@CountryID", countryId);
+
+                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                        if (rowsAffected > 0)
+                        {
+                            return Ok();
+                        }
+                        else
+                        {
+                            return NotFound();
+                        }
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                return StatusCode(500, error.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("search-country")]
+        public async Task<IActionResult> SearchCountry(string countryName)
+        {
+            try
+            {
+                using (var conn = new MySqlConnection(_connectionString))
+                {
+                    await conn.OpenAsync();
+                    string query = "SELECT * FROM country WHERE CountryName LIKE @CountryName";
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        // % işaretleri ile wildcard arama yapılır
+                        cmd.Parameters.AddWithValue("@CountryName", "%" + countryName + "%");
+
+                        using (var reader = await cmd.ExecuteReaderAsync())
+                        {
+                            var countries = new List<Country>();
+                            while (await reader.ReadAsync())
+                            {
+                                var country = new Country
+                                {
+                                    CountryId = Convert.ToInt32(reader["CountryID"]),
+                                    BinaryCode = reader["BinaryCode"].ToString(),
+                                    TripleCode = reader["TripleCode"].ToString(),
+                                    CountryName = reader["CountryName"].ToString(),
+                                    PhoneCode = reader["PhoneCode"].ToString()
+                                };
+                                countries.Add(country);
+                            }
+                            return Ok(countries);
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
