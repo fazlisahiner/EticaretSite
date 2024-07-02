@@ -135,7 +135,7 @@ namespace EticaretSite.Controllers
                 using (var conn = new MySqlConnection(_connectionString))
                 {
                     await conn.OpenAsync();
-                    string query = "INSERT INTO order_details (OrderID, ProductID, Quantity, ProductPrice, Discount, LineTotal) VALUES (@OrderID, @ProductID, @Quantity, @ProductPrice, @Discount, @LineTotal)";
+                    string query = "INSERT INTO order_details (OrderID, ProductID, Quantity, PoductPrice, Discount, LineTotal) VALUES (@OrderID, @ProductID, @Quantity, @ProductPrice, @Discount, @LineTotal)";
                     using (var cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@OrderID", orderDetail.OrderId);
@@ -163,5 +163,118 @@ namespace EticaretSite.Controllers
             }
         }
 
+        [HttpPut]
+        [Route("update-orderdetail/{detailId}")]
+        public async Task<IActionResult> UpdateOrderDetail(int detailId, [FromBody] OrderDetail orderDetail)
+        {
+            try
+            {
+                using (var conn = new MySqlConnection(_connectionString))
+                {
+                    await conn.OpenAsync();
+                    string query = "UPDATE order_details SET  ProductID = @ProductID, Quantity = @Quantity, PoductPrice = @ProductPrice, Discount = @Discount, LineTotal = @LineTotal WHERE DetailID = @DetailID";
+                    //OrderID = @OrderID,
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@DetailID", detailId);
+                        // cmd.Parameters.AddWithValue("@OrderID", orderDetail.OrderId);
+                        cmd.Parameters.AddWithValue("@ProductID", orderDetail.ProductId);
+                        cmd.Parameters.AddWithValue("@Quantity", orderDetail.Quantity);
+                        cmd.Parameters.AddWithValue("@ProductPrice", orderDetail.ProductPrice);
+                        cmd.Parameters.AddWithValue("@Discount", orderDetail.Discount);
+                        cmd.Parameters.AddWithValue("@LineTotal", orderDetail.LineTotal);
+
+                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                        if (rowsAffected > 0)
+                        {
+                            return Ok();
+                        }
+                        else
+                        {
+                            return NotFound();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        [HttpDelete]
+        [Route("delete-orderdetail/{detailId}")]
+        public async Task<IActionResult> DeleteOrderDetail(int detailId)
+        {
+            try
+            {
+                using (var conn = new MySqlConnection(_connectionString))
+                {
+                    await conn.OpenAsync();
+                    string query = "DELETE FROM order_details WHERE DetailID = @DetailID";
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@DetailID", detailId);
+
+                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                        if (rowsAffected > 0)
+                        {
+                            return Ok();
+                        }
+                        else
+                        {
+                            return NotFound();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+/*
+        [HttpGet]
+        [Route("search-orderdetails")]
+        public async Task<IActionResult> SearchOrderDetails(string searchTerm)
+        {
+            try
+            {
+                using (var conn = new MySqlConnection(_connectionString))
+                {
+                    await conn.OpenAsync();
+                    string query = "SELECT * FROM order_details WHERE ProductName LIKE @SearchTerm";
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");
+
+                        using (var reader = await cmd.ExecuteReaderAsync())
+                        {
+                            var orderDetails = new List<OrderDetail>();
+                            while (await reader.ReadAsync())
+                            {
+                                var orderDetail = new OrderDetail
+                                {
+                                    DetailId = Convert.ToInt32(reader["DetailID"]),
+                                    OrderId = Convert.ToInt32(reader["OrderID"]),
+                                    ProductId = Convert.ToInt32(reader["ProductID"]),
+                                    Quantity = Convert.ToInt32(reader["Quantity"]),
+                                    ProductPrice = Convert.ToDecimal(reader["ProductPrice"]),
+                                    Discount = Convert.ToDecimal(reader["Discount"]),
+                                    LineTotal = Convert.ToDecimal(reader["LineTotal"])
+                                };
+                                orderDetails.Add(orderDetail);
+                            }
+                            return Ok(orderDetails);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+*/
     }
 }
