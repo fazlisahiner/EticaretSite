@@ -1,0 +1,13 @@
+C:\1_D\FAZLI\SoftwareDevelopment\Eticaret\ETicaret.Core\obj\Debug\net8.0\ETicaret.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\1_D\FAZLI\SoftwareDevelopment\Eticaret\ETicaret.Core\obj\Debug\net8.0\ETicaret.Core.AssemblyInfoInputs.cache
+C:\1_D\FAZLI\SoftwareDevelopment\Eticaret\ETicaret.Core\obj\Debug\net8.0\ETicaret.Core.AssemblyInfo.cs
+C:\1_D\FAZLI\SoftwareDevelopment\Eticaret\ETicaret.Core\obj\Debug\net8.0\ETicaret.Core.csproj.CoreCompileInputs.cache
+C:\1_D\FAZLI\SoftwareDevelopment\Eticaret\ETicaret.Core\bin\Debug\net8.0\ETicaret.Core.deps.json
+C:\1_D\FAZLI\SoftwareDevelopment\Eticaret\ETicaret.Core\bin\Debug\net8.0\ETicaret.Core.dll
+C:\1_D\FAZLI\SoftwareDevelopment\Eticaret\ETicaret.Core\bin\Debug\net8.0\ETicaret.Core.pdb
+C:\1_D\FAZLI\SoftwareDevelopment\Eticaret\ETicaret.Core\obj\Debug\net8.0\ETicaret.Core.dll
+C:\1_D\FAZLI\SoftwareDevelopment\Eticaret\ETicaret.Core\obj\Debug\net8.0\refint\ETicaret.Core.dll
+C:\1_D\FAZLI\SoftwareDevelopment\Eticaret\ETicaret.Core\obj\Debug\net8.0\ETicaret.Core.pdb
+C:\1_D\FAZLI\SoftwareDevelopment\Eticaret\ETicaret.Core\obj\Debug\net8.0\ref\ETicaret.Core.dll
+C:\1_D\FAZLI\SoftwareDevelopment\Eticaret\ETicaret.Core\obj\Debug\net8.0\ETicaret.Core.csproj.AssemblyReference.cache
+C:\1_D\FAZLI\SoftwareDevelopment\Eticaret\ETicaret.Core\obj\Debug\net8.0\ETicaret.Core.sourcelink.json
