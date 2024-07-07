@@ -25,7 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ETicaret.Core\ETicaret.Core.csproj" />
     <ProjectReference Include="..\ETicaret.Repository\ETicaret.Repository.csproj" />
+    <ProjectReference Include="..\ETicaretSite.Webb\ETicaretSite.Web.csproj" />
   </ItemGroup>
 
 </Project>

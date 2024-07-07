@@ -1,5 +1,7 @@
 
+using ETicaret.Core.IRepository;
 using ETicaret.Repository;
+using ETicaret.Repository.Repository;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -33,7 +35,10 @@ namespace EticaretSite
 
             #endregion
 
+            // Add DI for repositories
+           // builder.Services.AddScoped<IUser, UserRepository>();
 
+            builder.Services.AddScoped<IUser, UserRepository>();
 
             var app = builder.Build();
 
@@ -53,5 +58,11 @@ namespace EticaretSite
 
             app.Run();
         }
+
+        //public void ConfigureServices(IServiceCollection services)
+        //{
+        //    // Diðer servisleri ekleyin
+        //    services.AddScoped<IUser, UserRepository>();
+        //}
     }
 }
