@@ -4,6 +4,7 @@ using ETicaret.Repository;
 using ETicaret.Repository.Repository;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+//using ETicaret.Repository.Repository;
 
 namespace EticaretSite
 {

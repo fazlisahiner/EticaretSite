@@ -168,7 +168,7 @@ namespace EticaretSite.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register([FromBody] User user)
+        public async Task<IActionResult> Register([FromBody] User user) //
         {
             if (ModelState.IsValid)
             {
