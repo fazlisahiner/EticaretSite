@@ -1,8 +1,13 @@
 
 using ETicaret.Core.IRepository;
+using ETicaret.Core.IUnitOfWork;
 using ETicaret.Repository;
 using ETicaret.Repository.Repository;
+using ETicaret.Repository.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
 using System.Reflection;
 //using ETicaret.Repository.Repository;
 
@@ -22,7 +27,7 @@ namespace EticaretSite
             builder.Services.AddSwaggerGen();
 
 
-            #region DB baðlantýsý
+            #region DB baglantisi
 
             builder.Services.AddDbContext<MyECommerceDB>(x =>
             {
@@ -38,6 +43,8 @@ namespace EticaretSite
 
             // Add DI for repositories
            // builder.Services.AddScoped<IUser, UserRepository>();
+
+           builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             builder.Services.AddScoped<IUser, UserRepository>();
 
@@ -62,7 +69,7 @@ namespace EticaretSite
 
         //public void ConfigureServices(IServiceCollection services)
         //{
-        //    // Diðer servisleri ekleyin
+        //    // Diï¿½er servisleri ekleyin
         //    services.AddScoped<IUser, UserRepository>();
         //}
     }
